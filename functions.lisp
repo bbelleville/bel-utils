@@ -39,4 +39,11 @@
 (defun string-keyword (string)
   (declare (type string string))
   (intern (string-upcase string) :keyword))
- 
+
+(export 'assoc-list-to-hash-table)
+(defun assoc-list-to-hash-table (assoc-list)
+  "takes an assoc list and returns a hash table with the keys and values from the assoc list"
+  (let ((table (make-hash-table)))
+    (dolist (x assoc-list table)
+      (setf (gethash (car x) table) (cadr x)))))
+		     

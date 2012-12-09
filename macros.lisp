@@ -13,3 +13,15 @@
 		     `(,x (gensym)))
 		 syms)
      ,@body))
+
+(defun make-acond (clauses)
+  (if clauses
+      (let ((pred (caar clauses))
+	    (forms (cdar clauses)))
+	`(aif ,pred
+	      (progn ,@forms)
+	      ,(make-acond (cdr clauses))))))
+
+(export '(acond it))
+(defmacro acond (&rest clauses)
+  (make-acond clauses))
