@@ -36,7 +36,7 @@
 	       (setf (queue-head queue) nil
 		     (queue-tail queue) nil))
 	  (values (node-contents last) t))
-	       (values nil nil)))
+	(values nil nil)))
 
 (export 'peek)
 (defgeneric peek (queue)
