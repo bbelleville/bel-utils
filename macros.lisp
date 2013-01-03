@@ -1,5 +1,9 @@
 (in-package :bel-utils)
 
+(export 'mac)
+(defmacro mac (form)
+  `(macroexpand-1 (quote ,form)))
+
 (export '(aif it))
 (defmacro aif (predicate consequent &optional else)
   `(let ((it ,predicate))
