@@ -10,7 +10,6 @@
     (if (find (aref s index) char-bag)
 	(push index acc))))
 
-(export 'split-string)
 (defun split-string (char-bag s)
   (let ((delim-pos (pos-chars char-bag s)))
     (labels ((substring (start-pos end-list)
@@ -35,12 +34,10 @@
 			     (cons-if-not-empty (substring start-pos end-list) acc))))))
       (nreverse (rec nil delim-pos nil)))))
 
-(export 'string-keyword)
 (defun string-keyword (string)
   (declare (type string string))
   (intern (string-upcase string) :keyword))
 
-(export 'assoc-list-to-hash-table)
 (defun assoc-list-to-hash-table (assoc-list)
   "takes an assoc list and returns a hash table with the keys and values from the assoc list"
   (let ((table (make-hash-table)))

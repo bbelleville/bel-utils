@@ -1,6 +1,5 @@
 (in-package :bel-utils)
 
-(export 'queue)
 (defclass queue ()
   ((head :accessor queue-head :initform nil)
    (tail :accessor queue-tail :initform nil)))
@@ -11,7 +10,6 @@
    (previous :accessor node-previous :initform nil :initarg :previous)
    (contents :accessor node-contents :initform nil :initarg :contents)))
 
-(export 'enqueue)
 (defgeneric enqueue (queue object)
   (:documentation "Adds object to the begining of queue"))
 
@@ -23,7 +21,6 @@
     (setf (queue-head queue) new-node))
   object) 
 
-(export 'dequeue)
 (defgeneric dequeue (queue)
   (:documentation "Removes the object at the end of the queue and returns that object as the primary value, or nil if the queue was empty. Returns nil as the secondary value if the queue was empty, or t if it was not"))
 
@@ -38,7 +35,6 @@
 	  (values (node-contents last) t))
 	(values nil nil)))
 
-(export 'peek)
 (defgeneric peek (queue)
   (:documentation "Returns the last object in the queue as the primary value, or nil if the queue is empty. Returns nil as the secondary value if the queue is empty, or t if it is not empty. The last item is not removed from the queue"))
 
