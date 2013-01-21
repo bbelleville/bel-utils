@@ -10,6 +10,15 @@
     (if (find (aref s index) char-bag)
 	(push index acc))))
 
+(defun break-string (char s)
+  (declare (type character char)
+	   (type string s))
+  (let ((pos (position char s)))
+    (if pos
+	(values (subseq s 0 pos)
+		(subseq s (1+ pos)))
+	(values s ""))))
+
 (defun split-string (char-bag s)
   (let ((delim-pos (pos-chars char-bag s)))
     (labels ((substring (start-pos end-list)

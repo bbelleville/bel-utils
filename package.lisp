@@ -8,6 +8,7 @@
    :split-string
    :string-keyword
    :assoc-list-to-hash-table
+   :break-string
 
    ; macros symbols
    :mac
